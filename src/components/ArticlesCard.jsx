@@ -1,5 +1,6 @@
 // import Article from "./ArticlePage";
 import { Link } from "react-router-dom";
+import Voter from "./Voter";
 
 export default function ArticleCard({ article_id, title, topic, author, body, created_at, votes, comment_count }) {
 
@@ -20,6 +21,7 @@ export default function ArticleCard({ article_id, title, topic, author, body, cr
           <dt>Votes: {votes}</dt>
           <dt>{comment_count} comments</dt>
         </dl>
+        <p><Voter /></p>
       </article>
     );
   }

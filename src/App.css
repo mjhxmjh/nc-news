@@ -90,3 +90,8 @@ a:hover {
 .article-topic {
   font-size: 15px;
 }
+
+.voter {
+  display: flex;
+  max-height: 20px;
+}
