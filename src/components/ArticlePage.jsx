@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import * as api from '../api.js'
 
 
@@ -30,7 +30,7 @@ export default function Article() {
             <dt>Date: {article.created_at}</dt>
             <dt>Votes: {article.votes}</dt>
             <p>
-            <dt><button>{article.comment_count} comments</button></dt>
+            <dt><button className="comments-button">{article.comment_count} comments</button></dt>
             </p>
             </dl>
            

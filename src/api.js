@@ -8,9 +8,13 @@ export const getArticles = (topicSlug) => {
      return data.articles;
     });
   }
-    return axios.get(`${baseURL}/articles?topic=${topicSlug}`).then(({ data }) => {
+    return axios.get(`${baseURL}/articles`, {
+      params: {
+        topic: topicSlug 
+      }
+    }).then(({ data }) => {
      return data.articles;
-  }) //// refactor with axios params /////
+  }) 
   
 };
 
