@@ -1,25 +1,25 @@
 .App {
-  font-family: 'PT Serif', serif;
+  font-family: 'Biryani', sans-serif;
 }
 
 a:link,
 a:visited,
 a:active {
   text-decoration: none; 
-  color:#a6afc7;
-}
+  color:#53a330;
+} 
 
 a:hover {
   text-decoration: none;
-  color:#757083;
+  color:#93c97a;
 }
 
 .App-header {
   display: flex;
   justify-content: space-around;
   align-content: center;
-  background-color: #001b42;
-  color: #dde0e6;
+  background-color: #1d1f1d;
+  color: #e1e2a4;
 
 }
 
@@ -83,3 +83,15 @@ a:hover {
   color: black;
 }
 
+.article-title {
+  font-size: 20px;
+}
+
+.article-topic {
+  font-size: 15px;
+}
+
+.voter {
+  display: flex;
+  max-height: 20px;
+}
