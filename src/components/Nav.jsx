@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import * as api from '../api'
 
 
-export default function NavX () {
+export default function Nav () {
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
@@ -16,16 +16,13 @@ export default function NavX () {
 
       <nav className="nav">
         <ul>
-
-        <li>
+          <li>
             <Link to='/' className="nav-tags">All</Link>
-       </li>
-    
-            {topics.map(({slug}) => {
-                return <li key={slug}> <Link to={`/articles/${slug}`}>{slug}</Link></li>
+          </li>
+             {topics.map(({slug}) => {
+                return <li key={slug}> <Link to={`/topics/${slug}`}>{slug}</Link></li>
             })}
-
-       </ul>
+        </ul>
       </nav>
     );
 }
