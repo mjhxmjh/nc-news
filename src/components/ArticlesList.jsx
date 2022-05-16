@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import * as api from '../api';
-import ArticleCard from "./ArticlesCard";
+import api from '../api';
+import ArticleCard from "./ArticleCard";
+
 
 
 export default function ArticlesList () {
@@ -18,7 +19,8 @@ export default function ArticlesList () {
     })
   }, [topic_slug]);
 
-  if (isLoading) return <p>loading..</p>;
+  if (isLoading) return <div><p>loading..</p><p className="loading"></p></div>
+
 
   return (
         <>
