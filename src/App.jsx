@@ -13,6 +13,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
+
         <Route path="/" element={<ArticlesList />} />
         <Route path="/topics/:topic_slug" element={<ArticlesList />} />
         <Route path="/articles/:article_id" element={<Article />} />
@@ -24,3 +25,4 @@ function App() {
 }
 
 export default App;
+
