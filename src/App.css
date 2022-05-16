@@ -1,38 +1,198 @@
 .App {
-  text-align: center;
+  font-family: 'Biryani', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #47832c;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+} 
+
+a:hover {
+  text-decoration: none;
+  color: #6d9c57;
+
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* justify-content: space-around; */
+  align-content: left;
+  gap: 100px;
+  background-color: #1d1f1d;
+  color: #e1e2a4;
+
+}
+
+.tagline {
+  font-size: 10px;
+}
+
+#main-title {
+  margin-left: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #949494;
+}
+
+.nav-icon {
+  max-width: 30px;
+  max-height: 30px; 
+}
+
+/* .nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 0px; */
+  /* align-content: center; */
+  /* align-items: center;
+  height: 80px;
+  background-color: #32348d; */
+
+/* }  */
+
+/* .nav-link {
+  border-style: solid;
+  border-width: 0px;
+  background-color: #6989b8;
+  max-width: 10em;
+  max-height: 10em;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 6%;
+} */
+
+/* .nav-link:hover {
+  background-color: #ffffff;
+} */
+
+.sort-by {
+  margin-left: 20px;
+}
+
+.article-card {
+  display: flexbox;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #c6ceda;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 10px;
+  color: black;
 }
 
-.App-link {
-  color: #61dafb;
+.article-detail-list {
+  font-size: 14px;;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* .article-card:hover {
+  background-color: #a8b0bd;
+} */
+
+.article-title-on-main {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.article-title-on-page {
+  font-size: 32px;
+}
+
+.article-topic {
+  font-size: 15px;
+}
+
+.voter {
+  display: flex;
+  max-height: 30px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.loading {
+  align-content: center;
+  border: 12px solid #f3f3f3; /* Light grey */
+  border-top: 12px solid #5c5c5c; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.like-button {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+
+.like-button:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.like-button:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.like-button:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.like-button:focus {
+  outline: 1px transparent;
+}
+
+.like-button:before {
+  display: none;
+}
+
+.like-button:-webkit-details-marker {
+  display: none;
 }
