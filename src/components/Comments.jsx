@@ -10,6 +10,7 @@ export default function Comments({
   votes,
 }) {
   const [comments, setComments] = useState([]);
+  const [hasPosted, setHasPosted] = useState(false);
   // const { articleId } = useParams();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function Comments({
       setComments(comments);
       return comments;
     });
-  }, [article_id]);
+  }, [article_id, hasPosted]); //has Posted <<
 
   return (
     <>
@@ -25,17 +26,11 @@ export default function Comments({
         <section className="article-card">
           {" "}
           {body}, by {author} on {created_at}, {votes} likes
+          <p>
+            <button>Delete</button>
+          </p>
         </section>
       </div>
     </>
   );
 }
-
-//properties on comments
-
-// article_id: 4
-// author: "jessjelly"
-// body: "Soluta autem fuga non alias. Odit eligendi voluptas reiciendis repudiandae reiciendis doloribus adipisci qui consequuntur. Et dignissimos unde optio. Recusandae aspernatur eius error. Eos autem et iusto sunt fuga ipsam omnis voluptatem rerum."
-// comment_id: 146
-// created_at: "2018-01-03T22:36:49.051Z"
-// votes: 6
