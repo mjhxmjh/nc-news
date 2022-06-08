@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../api";
 import ArticleCard from "./ArticleCard";
+import ErrorPage from "./ErrorPage";
 
 // sort articles - sort by date, by comment count, by votes, (ascending and descending options) - find the object key which we want
 // to sort by and create a new array...push the ordered list in to a new array and use if/elses
@@ -10,13 +11,20 @@ export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { topic_slug } = useParams();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
-    api.getArticles(topic_slug).then((articles) => {
-      setArticles(articles);
-      setIsLoading(false);
-    });
+    api
+      .getArticles(topic_slug)
+      .then((articles) => {
+        setArticles(articles);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError({ error });
+        setIsLoading(false);
+      });
   }, [topic_slug]);
 
   if (isLoading)
@@ -26,6 +34,10 @@ export default function ArticlesList() {
         <p className="loading"></p>
       </div>
     );
+
+  if (error) {
+    return <ErrorPage message={error.something.keyForTheErrorMessage} />;
+  }
   // use a <Sort /> component in the return here to render wth calls to the database for returning a sorted by list
   return (
     <>

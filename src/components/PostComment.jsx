@@ -15,9 +15,6 @@ export default function PostComment({
   const { article_id } = useParams();
   // const [username, setUsername] = useState("");
 
-  //  useEffect - renders whatever is in this function once on each mount of the component, unless there is a condition inside the []
-  // in which case it will render every time this changes.
-  hasPosted = true;
   // I think I had my handlesubmits in the parent, passed down on props
 
   return (
@@ -79,3 +76,6 @@ export default function PostComment({
 // };
 
 // the comment component should render with updated state when a new comment is posted
+
+//  useEffect - renders whatever is in this function once on each mount of the component, unless there is a condition inside the []
+// in which case it will render every time this changes.
