@@ -8,9 +8,10 @@ export default function Comments({
   body,
   created_at,
   votes,
+  hasPosted,
 }) {
   const [comments, setComments] = useState([]);
-  const [hasPosted, setHasPosted] = useState(false);
+  // const [hasPosted, setHasPosted] = useState(false);
   // const { articleId } = useParams();
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function Comments({
       setComments(comments);
       return comments;
     });
-  }, [article_id, hasPosted]); //has Posted <<
+  }, [article_id, comments, hasPosted]); //has Posted <<
 
   return (
     <>

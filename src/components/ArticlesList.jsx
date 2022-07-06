@@ -36,7 +36,7 @@ export default function ArticlesList() {
     );
 
   if (error) {
-    return <ErrorPage message={error.something.keyForTheErrorMessage} />;
+    return <ErrorPage message={error.status} />;
   }
   // use a <Sort /> component in the return here to render wth calls to the database for returning a sorted by list
   return (

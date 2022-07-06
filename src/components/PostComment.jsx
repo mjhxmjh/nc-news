@@ -1,25 +1,13 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-// import api from "../api";
-// import ArticlePage from "./ArticlePage";
-
 export default function PostComment({
   handleSubmit,
-  setNewComment,
   setUserName,
+  setNewComment,
   username,
   newComment,
-  hasPosted,
 }) {
-  // const [newComment, setNewComment] = useState("");
-  const { article_id } = useParams();
-  // const [username, setUsername] = useState("");
-
-  // I think I had my handlesubmits in the parent, passed down on props
-
   return (
     <div>
-      <form>
+      <form class="comment-form">
         Enter your name:{" "}
         <input
           name="username"
@@ -75,7 +63,7 @@ export default function PostComment({
 //   );
 // };
 
-// the comment component should render with updated state when a new comment is posted
+// the comment component should render with updated state when a new comment is posted - still not done
 
 //  useEffect - renders whatever is in this function once on each mount of the component, unless there is a condition inside the []
 // in which case it will render every time this changes.

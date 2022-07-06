@@ -11,6 +11,7 @@ export default function Article() {
   const [comments, setComments] = useState([]);
   const [username, setUsername] = useState("");
   const [newComment, setNewComment] = useState("");
+
   let hasPosted = false;
 
   useEffect(() => {
@@ -23,16 +24,20 @@ export default function Article() {
       setComments(comments);
       setIsLoading(false);
     });
-  }, [article_id, hasPosted]);
+  }, [article_id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("click button", article_id);
-    api.postComment(article_id, username, newComment).then(() => {});
-    setNewComment("");
-    setUsername("");
-    hasPosted = true;
-    // setHasPosted(() => {
+    api.postComment(article_id, username, newComment).then(() => {
+      console.log("post");
+      hasPosted = true;
+    });
+    setNewComment(event.newComment);
+    setUsername(event.setUsername);
+
+    // setNewComment("");
+    // setUsername("");
     // })
     // setHasPosted = true;
   };
@@ -86,6 +91,7 @@ export default function Article() {
                 author={author}
                 created_at={created_at}
                 votes={votes}
+                hasPosted={hasPosted}
               />
             );
           }
@@ -95,9 +101,11 @@ export default function Article() {
       <section>
         <PostComment
           handleSubmit={handleSubmit}
-          setNewComment={setNewComment}
-          setUsername={setUsername}
           articleId={article_id}
+          username={username}
+          newComment={newComment}
+          setNewComment={setNewComment}
+          setUserName={setUsername}
         />
       </section>
     </>

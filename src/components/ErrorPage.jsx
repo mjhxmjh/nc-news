@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function ErrorPage() {
+export default function ErrorPage({ status }) {
   return (
     <div>
       <h2>Ooops, looks like there's nothing here. Sorry.</h2>
@@ -12,3 +12,5 @@ export default function ErrorPage() {
     </div>
   );
 }
+
+// {history.go(-1)} - goes back one page in the history
