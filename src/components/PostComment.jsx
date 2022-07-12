@@ -8,24 +8,28 @@ export default function PostComment({
   return (
     <div>
       <form class="comment-form">
-        Enter your name:{" "}
-        <input
-          name="username"
-          value={username}
-          onChange={(event) => handleSubmit(setUserName(event.target.value))}
-          required
-        ></input>
-        <label>
-          Add a comment:
-          <textarea
-            name="comment"
-            value={newComment}
-            onChange={(event) =>
-              handleSubmit(setNewComment(event.target.value))
-            }
+        <p>
+          Enter your name:{" "}
+          <input
+            name="username"
+            value={username}
+            onChange={(event) => handleSubmit(setUserName(event.target.value))}
             required
-          ></textarea>
-        </label>
+          ></input>
+        </p>
+        <p>
+          <label>
+            Add a comment:
+            <textarea
+              name="comment"
+              value={newComment}
+              onChange={(event) =>
+                handleSubmit(setNewComment(event.target.value))
+              }
+              required
+            ></textarea>
+          </label>
+        </p>
       </form>
       <button type="submit" onClick={handleSubmit}>
         Submit Comment

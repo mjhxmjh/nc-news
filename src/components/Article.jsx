@@ -11,8 +11,7 @@ export default function Article() {
   const [comments, setComments] = useState([]);
   const [username, setUsername] = useState("");
   const [newComment, setNewComment] = useState("");
-
-  let hasPosted = false;
+  const [hasPosted, setHasPosted] = useState(false);
 
   useEffect(() => {
     api.getArticlesById(article_id).then((article) => {
@@ -24,22 +23,20 @@ export default function Article() {
       setComments(comments);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, hasPosted]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("click button", article_id);
     api.postComment(article_id, username, newComment).then(() => {
+      setHasPosted(true);
       console.log("post");
-      hasPosted = true;
+      setNewComment("");
+      setUsername("");
     });
     setNewComment(event.newComment);
     setUsername(event.setUsername);
-
-    // setNewComment("");
-    // setUsername("");
-    // })
-    // setHasPosted = true;
+    setHasPosted(false);
   };
 
   if (isLoading)

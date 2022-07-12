@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-import api from "../api.js";
-
 export default function Comments({
   article_id,
   author,
@@ -10,16 +6,16 @@ export default function Comments({
   votes,
   hasPosted,
 }) {
-  const [comments, setComments] = useState([]);
-  // const [hasPosted, setHasPosted] = useState(false);
+  // const [comments, setComments] = useState([]);
+
   // const { articleId } = useParams();
 
-  useEffect(() => {
-    api.getComments(article_id).then((comments) => {
-      setComments(comments);
-      return comments;
-    });
-  }, [article_id, comments, hasPosted]); //has Posted <<
+  // useEffect(() => {
+  //   api.getComments(article_id).then((comments) => {
+  //     setComments(comments);
+  //     return comments;
+  //   });
+  // }, [article_id, comments, hasPosted]); //has Posted - passed thru on props <<
 
   return (
     <>
