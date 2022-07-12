@@ -27,10 +27,8 @@ export default function Article() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("click button", article_id);
     api.postComment(article_id, username, newComment).then(() => {
       setHasPosted(true);
-      console.log("post");
       setNewComment("");
       setUsername("");
     });

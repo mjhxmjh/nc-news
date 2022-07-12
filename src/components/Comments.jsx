@@ -1,22 +1,4 @@
-export default function Comments({
-  article_id,
-  author,
-  body,
-  created_at,
-  votes,
-  hasPosted,
-}) {
-  // const [comments, setComments] = useState([]);
-
-  // const { articleId } = useParams();
-
-  // useEffect(() => {
-  //   api.getComments(article_id).then((comments) => {
-  //     setComments(comments);
-  //     return comments;
-  //   });
-  // }, [article_id, comments, hasPosted]); //has Posted - passed thru on props <<
-
+export default function Comments({ author, body, created_at, votes }) {
   return (
     <>
       <div>
