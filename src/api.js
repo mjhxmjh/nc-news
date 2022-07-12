@@ -50,7 +50,6 @@ const api = {
       .post(`${baseURL}/articles/${articleId}/comments`, {
         username,
         body,
-        article_id: articleId,
       })
       .then((response) => {
         console.log(response);
@@ -60,6 +59,8 @@ const api = {
       });
   },
 };
+
+// api.postComment(8, "jessjelly", "interesting article");
 
 export default api;
 

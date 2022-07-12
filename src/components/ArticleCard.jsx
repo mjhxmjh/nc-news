@@ -1,4 +1,3 @@
-// import Article from "./ArticlePage";
 import { Link } from "react-router-dom";
 import Voter from "./Voter";
 

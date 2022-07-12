@@ -1,20 +1,110 @@
-// export default function SingleArticle ({ article_id, title, topic, author, body, created_at, votes, comment_count }) {
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import api from "../api.js";
+import Comments from "./Comments.jsx";
+import PostComment from "./PostComment.jsx";
 
-//     return (
-//       <article className="article-card">
+export default function Article() {
+  const [article, setArticle] = useState([]);
+  const { article_id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [comments, setComments] = useState([]);
+  const [username, setUsername] = useState("");
+  const [newComment, setNewComment] = useState("");
+  const [hasPosted, setHasPosted] = useState(false);
 
-//         <div>
-//         <h3 className="article-title">{title}</h3>
-//         </div>
+  useEffect(() => {
+    api.getArticlesById(article_id).then((article) => {
+      setArticle(article);
+      setIsLoading(false);
+      return article;
+    });
+    api.getComments(article_id).then((comments) => {
+      setComments(comments);
+      setIsLoading(false);
+    });
+  }, [article_id, hasPosted]);
 
-//         <dl className="article-detail-list">
-//           <dt>By: {author}</dt>
-//           <dt>{body}</dt>
-//           <dt>Date: {created_at}</dt>
-//           <dt>Votes: {votes}</dt>
-//           <dt>{comment_count} comments</dt>
-//         </dl>
-//       </article>
-//     );
-//   }
-  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("click button", article_id);
+    api.postComment(article_id, username, newComment).then(() => {
+      setHasPosted(true);
+      console.log("post");
+      setNewComment("");
+      setUsername("");
+    });
+    setNewComment(event.newComment);
+    setUsername(event.setUsername);
+    setHasPosted(false);
+  };
+
+  if (isLoading)
+    return (
+      <div>
+        <p>loading..</p>
+        <p className="loading"></p>
+      </div>
+    );
+
+  return (
+    <>
+      <article className="article-card">
+        <div>
+          <h2 className="article-title-on-page">{article.title}</h2>
+          <h4>
+            <i>
+              By{" "}
+              {`${article.author}`[0].toUpperCase() +
+                `${article.author}`.slice(1)}{" "}
+              / {`${article.created_at}`.substring(0, 10)}
+            </i>
+          </h4>
+        </div>
+        <dl className="article-detail-list">
+          <p>
+            <dt>{article.body}</dt>
+          </p>
+          <dt>{article.votes} people like this article</dt>
+          <p>
+            <dt>
+              <button className="comments-button">
+                {article.comment_count} comments
+              </button>
+            </dt>
+          </p>
+        </dl>
+      </article>
+
+      <section>
+        {comments.map(
+          ({ article_id, author, body, comment_id, created_at, votes }) => {
+            return (
+              <Comments
+                key={article_id.id}
+                article_id={article_id}
+                comment_id={comment_id}
+                body={body}
+                author={author}
+                created_at={created_at}
+                votes={votes}
+                hasPosted={hasPosted}
+              />
+            );
+          }
+        )}
+      </section>
+
+      <section>
+        <PostComment
+          handleSubmit={handleSubmit}
+          articleId={article_id}
+          username={username}
+          newComment={newComment}
+          setNewComment={setNewComment}
+          setUserName={setUsername}
+        />
+      </section>
+    </>
+  );
+}
