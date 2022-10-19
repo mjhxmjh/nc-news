@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className="App-header">
       <Link to="/" className="Nav__Link">
-        <h1 id="main-title">MJH News</h1>
+        <h1 id="main-title">Mattcoders News</h1>
       </Link>
 
       <Link to="/user">
