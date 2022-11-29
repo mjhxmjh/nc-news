@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../api";
 import ArticleCard from "./ArticleCard";
 import ErrorPage from "./ErrorPage";
-
-// sort articles - sort by date, by comment count, by votes, (ascending and descending options) - find the object key which we want
-// to sort by and create a new array...push the ordered list in to a new array and use if/elses
+import Sort from "./Sort";
 
 export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
@@ -38,18 +36,12 @@ export default function ArticlesList() {
   if (error) {
     return <ErrorPage message={error.status} />;
   }
-  // use a <Sort /> component in the return here to render wth calls to the database for returning a sorted by list
+  // use a <Sort /> component in the return here to render with calls to the database for returning a sorted by list
   return (
     <>
-      <section className="sort-by">
-        <label for="sort-by">Sort by: </label>
-        <select onClick={console.log("change")} name="sort-by" id="sort-by">
-          <option>Date descending</option>
-          <option>Date ascending</option>
-        </select>
-      </section>
+      <Sort />
 
-      <section>
+      <section className="articles-block">
         {articles.map(
           ({
             article_id,

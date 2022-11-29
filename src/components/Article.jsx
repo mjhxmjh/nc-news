@@ -75,6 +75,7 @@ export default function Article() {
       </article>
 
       <section>
+        <div className="comment-breaker">- COMMENTS -</div>
         {comments.map(
           ({ article_id, author, body, comment_id, created_at, votes }) => {
             return (
